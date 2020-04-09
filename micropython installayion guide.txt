@@ -1,0 +1,36 @@
+After downloading python,
+
+Step 1: Installation of esptool
+
+	pip install esptool
+
+Step 2: Uploading of firmware in NodeMCU
+
+	// too know where the esptooli is installed, type the below command and copy the path
+	pip show esptool
+
+	// connect your NodeMCU and erase all its flash memory and pervious firmware
+	--> for mac
+		esptool.py --port /dev/ttyUSB0 erase_flash
+	--> for windows
+		esptool.py --port COM3 erase_flash
+		// here COM3 is replaced with the port that is connected
+	
+	// uploading firmware
+	--> for mac
+		esptool.py --port /dev/ttyUSB0 --baud 115200 write_flash --flash_size=detect 0 esp8266-20170108-v1.8.7.bin
+	--> for windows
+		esptool.py --port COM3 --baud 115200 write_flash --flash_size=detect 0 esp8266-20170108-v1.8.7.bin
+		// here COM3 is replaced with the port that is connected
+
+Step 3: Uploading your code file
+
+	// to upload your code file you need to install adafruit-ampy using pip
+	pip install adafruit-ampy
+	
+	// uploading tou file
+	--> for mac
+		ampy --port /dev/ttyUSB0 put file_path \main.py
+	--> for windows
+		ampy --port COM3 put file_path \main.py
+		// here COM3 is replaced with the port that is connected
